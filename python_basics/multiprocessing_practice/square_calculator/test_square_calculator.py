@@ -12,9 +12,23 @@ class SquareCalculatorTests(unittest.TestCase):
     def test_calculate_squares_in_processes_returns_squares(self):
         numbers = [1, 2, 3, 4]
 
-        result = calculate_squares_in_processes(numbers)
+        result = calculate_squares_in_processes(numbers, max_workers=2)
 
         self.assertEqual(result, [1, 4, 9, 16])
+
+    def test_preserves_input_order(self):
+        numbers = [5, 1, 4, 2]
+
+        result = calculate_squares_in_processes(numbers, max_workers=2)
+
+        self.assertEqual(result, [25, 1, 16, 4])
+
+    def test_handles_duplicate_numbers(self):
+        numbers = [2, 2, 3]
+
+        result = calculate_squares_in_processes(numbers, max_workers=2)
+
+        self.assertEqual(result, [4, 4, 9])
 
     def test_empty_list_returns_empty_list(self):
         result = calculate_squares_in_processes([])
