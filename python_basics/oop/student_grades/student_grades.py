@@ -18,6 +18,12 @@ class StudentGrades:
 
         return sum(self.grades) / len(self.grades)
 
+    def get_highest_grade(self):
+        if not self.grades:
+            return 0
+
+        return max(self.grades)
+
     def has_passed(self, passing_grade=60):
         return self.get_average_grade() >= passing_grade
 

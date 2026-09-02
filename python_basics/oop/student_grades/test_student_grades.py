@@ -31,6 +31,20 @@ class StudentGradesTests(unittest.TestCase):
 
         self.assertEqual(student.get_average_grade(), 90)
 
+    def test_get_highest_grade_returns_highest_grade(self):
+        student = StudentGrades("Max")
+
+        student.add_grade(70)
+        student.add_grade(95)
+        student.add_grade(80)
+
+        self.assertEqual(student.get_highest_grade(), 95)
+
+    def test_get_highest_grade_returns_zero_without_grades(self):
+        student = StudentGrades("Max")
+
+        self.assertEqual(student.get_highest_grade(), 0)
+
     def test_get_average_grade_returns_zero_without_grades(self):
         student = StudentGrades("Max")
 
