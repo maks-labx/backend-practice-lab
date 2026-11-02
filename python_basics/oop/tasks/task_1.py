@@ -33,3 +33,4 @@ priority_store.add_problem("Power outage")
 print(store1.get_summary())
 print(store2.get_summary())
 print(priority_store.get_summary())
+
